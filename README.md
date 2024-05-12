@@ -73,3 +73,10 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+[shadcn](https://www.shadcn-vue.com/)
+
+```bash
+npx nuxi@latest devtools enable
+```
+![](files/2024-05-12-11-04-06.png)
