@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, toRefs, computed, watch, watchEffect } from "vue";
 import Child from "./Child.vue";
+import JSX from "./JSX.vue";
 import { useMouse } from "./useMouse";
 import { Input } from "@/components/ui/input";
 
@@ -56,12 +57,7 @@ const emitFn = (value: string) => {
 <template>
   <div>Home</div>
   <Input v-model="name" type="string" placeholder="name" />
-  <Input
-    :modelValue="name"
-    @update:modelValue="name = $event.toString()"
-    type="string"
-    placeholder="name"
-  />
+  <Input :modelValue="name" @update:modelValue="name = $event.toString()" type="string" placeholder="name" />
   <Button @click="toggle">toggle Name</Button>
 
   <div>
@@ -77,16 +73,13 @@ const emitFn = (value: string) => {
   <div>Double Count: {{ doubleCount }}</div>
   <Button @click="incrementCount">Increment Count</Button>
 
-  <Child
-    v-if="count > 0 && count % 3 !== 0"
-    :message="message"
-    :count="doubleCount"
-    @update-message="emitFn"
-    ref="child"
-  >
+  <Child v-if="count > 0 && count % 3 !== 0" :message="message" :count="doubleCount" @update-message="emitFn"
+    ref="child">
     <div class="flex gap-2">
       <Button @click="getChild($refs)"> get child </Button>
       <Button @click="changeChild"> slot change child </Button>
     </div>
   </Child>
+  <JSX @update-message="emitFn" :message="'text'" />
+  <br />
 </template>
