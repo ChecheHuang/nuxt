@@ -2,20 +2,26 @@
 import { Button } from "~/components/ui/button";
 import { usePiniaStore2 } from "~/stores/usePinia";
 
+
+
+interface Props {
+    message: string;
+    count?: number;
+}
 export default ({
-    props: {
-        message: {
-            type: String,
-            default: "Hello, World!",
-        },
-    },
+    // props: {
+    //     message: {
+    //         type: String,
+    //         default: "Hello, World!",
+    //     },
+    // },
     emits: ["update-message"],
-    setup(props, { emit }) {
-        console.log(props);
+    setup({ message, count }: Props, { emit }) {
+        // console.log(props);
         const piniaStore = usePiniaStore2();
         return {
             // props
-            message: props.message,
+            message: message,
             emit,
             piniaStore
         };
