@@ -5,6 +5,21 @@ import JSX from "./JSX.vue";
 import { useMouse } from "./useMouse";
 import { Input } from "@/components/ui/input";
 
+
+const cookie = useCookie("NEXT_LOCALE");
+const { locale, getLocaleMessage, setLocaleMessage } = useI18n()
+
+
+
+const changeLang = () => {
+  // console.log(locale.value)
+  console.log(getLocaleMessage(locale.value))
+  setLocaleMessage('en', {
+    hello: 'hahaha'
+  })
+  locale.value = locale.value === 'en' ? 'zh-tw' : 'en'
+}
+
 const name = ref("about");
 defineExpose({ name });
 provide("name", name);
@@ -55,6 +70,9 @@ const emitFn = (value: string) => {
 };
 </script>
 <template>
+  <Button @click="changeLang">
+    {{ $t('hello') }}
+  </Button>
   <div>Home</div>
   <Input v-model="name" type="string" placeholder="name" />
   <Input :modelValue="name" @update:modelValue="name = $event.toString()" type="string" placeholder="name" />
