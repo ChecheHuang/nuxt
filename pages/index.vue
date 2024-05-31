@@ -2,6 +2,7 @@
 import { ref, reactive, toRefs, computed, watch, watchEffect } from "vue";
 import Child from "./Child.vue";
 import JSX from "./JSX.vue";
+import JSX2 from "./JSX2.vue";
 import { useMouse } from "./useMouse";
 import { Input } from "@/components/ui/input";
 
@@ -99,5 +100,6 @@ const emitFn = (value: string) => {
     </div>
   </Child>
   <JSX @update-message="emitFn" :message="'text'" />
+  <JSX2 @update-message="emitFn" :message="'text'" />
   <br />
 </template>
